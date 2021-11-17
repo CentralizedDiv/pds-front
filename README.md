@@ -1,15 +1,18 @@
 # Seleto - Seleção de Fotos Online
 
 ## Equipe
+
 Arthur Herbert Silva Melo
 Igor Oliveira Valente da Silveira
 Júlia Amorim de Araújo
 Vitor Ribeiro dos Santos
 
 ## Escopo
+
 Aplicativo WEB para fotógrafos, onde os mesmos poderão fazer o upload dos ensaios de seus clientes, disponibiliizando as fotos em nuvem para que seus clientes possam fazer comentários sobre edições, favoritar fotos, escolher quais farão parte da entrega final, entre outras funcionalidades.
 
 ## Tecnologia do projeto
+
 Usaremos ReactJS no frontend e NestJS no banckend, ambos escritos utilizando TypeScript.
 Usaremos AWS como infraestrutura, seguindo a arquitetura abaixo:
 
@@ -24,10 +27,11 @@ Usaremos AWS como infraestrutura, seguindo a arquitetura abaixo:
 - Como fotógrafo, eu quero gerar um link com as fotos finais do cliente
 
 - Como cliente, eu quero visualizar um álbum com minhas fotos
-- Como cliente, eu quero pré-selecionar fotos, comentar e marcá-las como favorita	
+- Como cliente, eu quero pré-selecionar fotos, comentar e marcá-las como favorita
 - Como cliente, eu quero receber um link com todas as minhas fotos selecionadas.
 
 (Arquitetura)
+
 - Preparar ambiente frontend (React + AWS)
 - Preparar ambiente backend (NestJS + AWS)
 - Preparar banco de dados (RDS AWS + Entidades)
@@ -35,29 +39,29 @@ Usaremos AWS como infraestrutura, seguindo a arquitetura abaixo:
 
 ### Sprint 1
 
-	- Tarefas Técnicas
-		- Preparar ambiente da AWS [Arthur] 
-		- Preparar ambiente de desenvolvimento (VSCode, Dependências, Lint) [Júlia]
-		- Preparar ambiente da AWS [Arthur]
-		- Preparar ambiente de desenvolvimento (VSCode, Dependências, Lint) [Vitor]
-		- Preparar ambiente da AWS [Arthur]
-		- Discutir e criar esquema do banco de dados [Arthur, Júlia, Vitor, Igor] 
-		
-	- História: Como fotógrafo, eu quero criar álbuns
-	- Tarefas:
-		- Projetar e testar a interface web [Júlia]
-		- Implementar interface Web [Júlia]
-		- Criar e testar rota para buscar álbum [Igor]		
-		- Criar e testar rota para remover álbum [Vitor]	
-		- Criar e testar rota para criar álbum [Vitor]		
-	
-	- História: Como fotógrafo, eu quero fazer upload de fotos
-	- Tarefas:
-		- Projetar e testar a interface web [Arthur]
-		- Implementar interface Web [Arthur]
-		- Implementar e testar mecanismo de marca d'água nas fotos [Júlia]
-		- Criar e testar comunicação com o S3 [Vitor]
-		- Criar e testar rota para adicionar as fotos [Igor]
-		- Criar e testar rota para remover as fotos [Vitor]
-		- Criar e testar rota para buscar as fotos [Igor]
-		- Criar e testar camada de autenticação [Igor]
+    - Tarefas Técnicas
+    	- Preparar ambiente da AWS [Arthur]
+    	- Preparar ambiente de desenvolvimento (VSCode, Dependências, Lint) [Júlia]
+    	- Preparar ambiente da AWS [Arthur]
+    	- Preparar ambiente de desenvolvimento (VSCode, Dependências, Lint) [Vitor]
+    	- Preparar ambiente da AWS [Arthur]
+    	- Discutir e criar esquema do banco de dados [Arthur, Júlia, Vitor, Igor]
+
+    - História: Como fotógrafo, eu quero criar álbuns
+    - Tarefas:
+    	- Projetar e testar a interface web [Júlia]
+    	- Implementar interface Web [Júlia]
+    	- Criar e testar rota para buscar álbum [Igor]
+    	- Criar e testar rota para remover álbum [Vitor]
+    	- Criar e testar rota para criar álbum [Vitor]
+
+    - História: Como fotógrafo, eu quero fazer upload de fotos
+    - Tarefas:
+    	- Projetar e testar a interface web [Arthur]
+    	- Implementar interface Web [Arthur]
+    	- Implementar e testar mecanismo de marca d'água nas fotos [Júlia]
+    	- Criar e testar comunicação com o S3 [Vitor]
+    	- Criar e testar rota para adicionar as fotos [Igor]
+    	- Criar e testar rota para remover as fotos [Vitor]
+    	- Criar e testar rota para buscar as fotos [Igor]
+    	- Criar e testar camada de autenticação [Igor]
