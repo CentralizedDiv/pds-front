@@ -3,6 +3,7 @@ import "./App.css";
 
 import Card from "./components/DemoCard";
 import Menu from "./components/Menu";
+import { Link, Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -12,6 +13,16 @@ function App() {
         <p>Testing CI with GH Actions</p>
         <Card />
         <Menu />
+        <nav
+          style={{
+            borderBottom: "solid 1px",
+            paddingBottom: "1rem",
+          }}
+        >
+          <Link to="/dashboard">Dashboard</Link> |{" "}
+          <Link to="/album">Álbum</Link>
+          <Outlet />
+        </nav>
       </header>
     </div>
   );
