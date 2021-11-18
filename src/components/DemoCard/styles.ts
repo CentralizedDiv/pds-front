@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Card = styled.div`
+export const Card = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,10 +10,8 @@ const Card = styled.div`
   border-radius: 25%;
 `;
 
-const Label = styled.p`
+export const Label = styled.p`
   font-size: large;
   font-weight: bold;
   color: black;
 `;
-
-export default { Card, Label };
