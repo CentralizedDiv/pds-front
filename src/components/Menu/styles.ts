@@ -42,5 +42,8 @@ export const TitleButton = styled.div`
   height: 48px;
   border-radius: 25%;
   background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 `;
