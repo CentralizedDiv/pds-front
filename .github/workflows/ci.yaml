@@ -9,6 +9,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set env
+        run: echo "SKIP_PREFLIGHT_CHECK=true" >> $GITHUB_ENV
+
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
