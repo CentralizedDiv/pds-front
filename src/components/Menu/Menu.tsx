@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ChevronLeftLogo from "../../assets/chevron-left.svg";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { MenuContainer, TitleContainer, Title, TitleButton } from "./styles";
 
 const Menu = () => {
@@ -13,7 +13,7 @@ const Menu = () => {
       <TitleContainer>
         <Title>🌟 Seleto</Title>
         <TitleButton onClick={() => handleTitleButtonClick()}>
-          <img src={ChevronLeftLogo} />
+          {open ? <FaChevronLeft /> : <FaChevronRight />}
         </TitleButton>
       </TitleContainer>
     </MenuContainer>
