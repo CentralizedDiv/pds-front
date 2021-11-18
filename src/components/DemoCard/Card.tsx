@@ -1,10 +1,10 @@
-import Styles from "./styles";
+import { Card, Label } from "./styles";
 
 const DemoCard = () => {
   return (
-    <Styles.Card>
-      <Styles.Label>Meu Card!</Styles.Label>
-    </Styles.Card>
+    <Card>
+      <Label>Meu Card!</Label>
+    </Card>
   );
 };
 
