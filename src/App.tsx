@@ -1,28 +1,41 @@
-import "./App.css";
+import { error } from "components/shared/colors";
+import { TextCP, TextType } from "components/shared/text/text.component";
+import { ShellCP } from "components/shell/shell.component";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-import Card from "./components/DemoCard";
-import Menu from "./components/Menu";
-import { Link, Outlet } from "react-router-dom";
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Card />
-        <Menu />
-        <nav
-          style={{
-            borderBottom: "solid 1px",
-            paddingBottom: "1rem",
-          }}
-        >
-          <Link to="/dashboard">Dashboard</Link> |{" "}
-          <Link to="/album">Álbum</Link>
-          <Outlet />
-        </nav>
-      </header>
-    </div>
-  );
+export function App() {
+  return <ShellCP />;
 }
 
-export default App;
+const NotFoundCountainer = styled.div`
+  padding: 24px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+`;
+
+export function NotFound() {
+  return (
+    <NotFoundCountainer>
+      <TextCP type={TextType.TITLE_48} color={error}>
+        Oops!
+      </TextCP>
+      <TextCP>Não há nada aqui!</TextCP>
+      <Link
+        to={"/albuns"}
+        style={{
+          color: "#ffffff",
+          textUnderlineOffset: "4px",
+        }}
+      >
+        <TextCP>Voltar</TextCP>
+      </Link>
+    </NotFoundCountainer>
+  );
+}

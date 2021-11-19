@@ -22,7 +22,7 @@ interface ModalProps {
   onOk?: () => void;
 }
 
-ReactModal.setAppElement("#root");
+if (process.env.NODE_ENV !== "test") ReactModal.setAppElement("#root");
 
 const overlayStyles = {
   backgroundColor: "rgba(0,0,0,0.85)",
