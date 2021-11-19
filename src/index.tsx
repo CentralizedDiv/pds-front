@@ -8,6 +8,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import Dashboard from "modules/dashboard/containers/dashboard.container";
 import Album from "modules/album/containers/album.container";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { DisplaySharedComponents } from "components/shared";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: false } },
@@ -30,6 +31,7 @@ ReactDOM.render(
               }
             />
           </Route>
+          <Route path="/shared" element={<DisplaySharedComponents />} />
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
