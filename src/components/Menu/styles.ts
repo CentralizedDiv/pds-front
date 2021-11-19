@@ -47,3 +47,7 @@ export const TitleButton = styled.div`
   justify-content: center;
   cursor: pointer;
 `;
+
+export const MenuContent = styled.div`
+  margin-top: 24px;
+`;
