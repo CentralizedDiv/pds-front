@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 interface IProps {
   isSelected: boolean;
-  open: boolean;
+  isMenuOpened: boolean;
 }
 
 export const Button = styled.div<IProps>`
@@ -11,7 +11,7 @@ export const Button = styled.div<IProps>`
   height: 60px;
   border-radius: 8px;
   width: 100%;
-  display: ${({ open }) => (open ? "flex" : "none")};
+  display: ${({ isMenuOpened }) => (isMenuOpened ? "flex" : "none")};
   align-items: center;
   margin-bottom: 8px;
 `;
@@ -24,10 +24,6 @@ export const MenuItemContent = styled.div`
 `;
 
 export const MenuItemName = styled.p`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 16px;
   margin-left: 8px;
   padding: 0px 10px;
 `;

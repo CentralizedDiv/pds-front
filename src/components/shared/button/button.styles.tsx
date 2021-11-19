@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { blue } from "../colors";
+import { blue, light_blue } from "../colors";
 
 export const Button = styled.button<{
   ghost: boolean;
@@ -25,4 +25,14 @@ export const Button = styled.button<{
 export const IconContainer = styled.span<{ position: "left" | "right" }>`
   margin: ${(props) =>
     props.position === "left" ? "0px 8px 0px 0px" : "0px 0px 0px 8px"};
+`;
+
+export const IconCircle = styled.div`
+  background-color: ${light_blue};
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

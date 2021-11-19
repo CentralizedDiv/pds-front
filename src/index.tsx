@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import { App, NotFound } from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ReactQueryDevtools } from "react-query/devtools";
-import Dashboard from "modules/dashboard/containers/dashboard.container";
-import Album from "modules/album/containers/album.container";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { DisplaySharedComponents } from "components/shared";
+import { routeGroups } from "__config/routes";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: false } },
@@ -20,16 +19,16 @@ ReactDOM.render(
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="album/:albumId" element={<Album />} />
-            <Route
-              path="*"
-              element={
-                <main style={{ padding: "1rem" }}>
-                  <p>There's nothing here!</p>
-                </main>
-              }
-            />
+            {routeGroups.map(({ routes }) =>
+              routes.map((route) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={route.element}
+                />
+              ))
+            )}
+            <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/shared" element={<DisplaySharedComponents />} />
         </Routes>

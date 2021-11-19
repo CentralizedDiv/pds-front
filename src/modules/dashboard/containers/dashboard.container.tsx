@@ -1,30 +1,40 @@
-import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
-import { getAlbums } from "__mock/data";
-import { getHelloWorld } from "../api/dashboard.api";
+import { ButtonCP } from "components/shared/button/button.component";
+import { IconCircle } from "components/shared/button/button.styles";
+import { ModalCP } from "components/shared/modal/modal.component";
+import PageWrapper from "components/shared/page-wrapper/page-wrapper.component";
+import { useCallback, useState } from "react";
+import { MdAdd } from "react-icons/md";
+
 export default function Dashboard() {
-  const aAlbums = getAlbums();
-  const result = useQuery("hello-world", getHelloWorld);
-  console.log(result);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCreateNewAlbum = useCallback(() => {}, []);
 
   return (
-    <div style={{ display: "flex" }}>
-      <nav
-        style={{
-          borderRight: "solid 1px",
-          padding: "1rem",
-        }}
-      >
-        {aAlbums.map((album) => (
-          <Link
-            style={{ display: "block", margin: "1rem 0" }}
-            to={`/album/${album.name}`}
-            key={album.name}
+    <>
+      <PageWrapper
+        title="Álbuns"
+        headerRight={
+          <ButtonCP
+            icon={
+              <IconCircle>
+                <MdAdd color={"#ffffff"} size={16} />
+              </IconCircle>
+            }
+            onClick={() => setIsModalOpen(true)}
           >
-            {album.name}
-          </Link>
-        ))}
-      </nav>
-    </div>
+            Novo álbum
+          </ButtonCP>
+        }
+      />
+      <ModalCP
+        isOpen={isModalOpen}
+        title="Novo álbum"
+        cancelLabel="Cancelar"
+        onCancel={() => setIsModalOpen(false)}
+        onOk={handleCreateNewAlbum}
+        okLabel="Criar álbum"
+      ></ModalCP>
+    </>
   );
 }
