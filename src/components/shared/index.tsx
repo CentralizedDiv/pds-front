@@ -8,7 +8,6 @@ import { ModalCP } from "./modal/modal.component";
 import { PillsCP } from "./pills/pills.component";
 import { TextCP, TextType } from "./text/text.component";
 import { AvatarCP } from "./avatar/avatar.component";
-import { UploaderCP } from "./uploader/uploader/uploader.component";
 import { FileListCP } from "./uploader/file-list/file-list.component";
 
 const pills = [

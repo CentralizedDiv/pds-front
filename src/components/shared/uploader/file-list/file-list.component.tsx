@@ -2,8 +2,7 @@ import axios, { CancelTokenSource } from "axios";
 import { black } from "components/shared/colors";
 import { ProgressBarCP } from "components/shared/progress-bar/progress-bar.component";
 import { TextCP, TextType } from "components/shared/text/text.component";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { axiosInstance } from "__config/axios";
+import React, { useCallback, useMemo, useState } from "react";
 import { FileListItemCP } from "../file-list-item/file-list-item.component";
 import { UploaderCP } from "../uploader/uploader.component";
 import {

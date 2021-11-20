@@ -1,4 +1,4 @@
-import { black, blue } from "components/shared/colors";
+import { black } from "components/shared/colors";
 import styled from "styled-components";
 
 interface IProps {

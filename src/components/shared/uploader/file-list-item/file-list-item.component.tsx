@@ -1,7 +1,6 @@
 import {
   text_secondary,
   error as error_color,
-  success as success_color,
   black,
 } from "components/shared/colors";
 import { ProgressBarCP } from "components/shared/progress-bar/progress-bar.component";

@@ -3,15 +3,8 @@ import { text_secondary } from "components/shared/colors";
 import { PopoverCP } from "components/shared/popover/popover.component";
 import { TextCP, TextType } from "components/shared/text/text.component";
 import React, { useEffect, useState } from "react";
-import {
-  MdCheck,
-  MdChevronLeft,
-  MdChevronRight,
-  MdClose,
-  MdLogout,
-} from "react-icons/md";
+import { MdChevronLeft, MdChevronRight, MdLogout } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowContainer, Popover } from "react-tiny-popover";
 import { routeGroups } from "__config/routes";
 import { MenuItemCP } from "./menu-item/menu-item.component";
 
