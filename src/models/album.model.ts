@@ -6,8 +6,8 @@ import { Photographer } from "./user.model";
 export interface Album extends BaseEntity {
   photos: Photo[];
   comments: Comment[];
-  photographer: Photographer;
-  cover: Photo;
+  photographer: Omit<Photographer, "albums">;
+  cover: Omit<Photo, "album">;
   allowAdditionalPhotos: boolean;
   numberoOfcontractedPhotos: number;
   selectionDeadline: string;
