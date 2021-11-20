@@ -1,8 +1,17 @@
+import { AvatarCP } from "components/shared/avatar/avatar.component";
 import { text_secondary } from "components/shared/colors";
-import { TextCP } from "components/shared/text/text.component";
-import React from "react";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { PopoverCP } from "components/shared/popover/popover.component";
+import { TextCP, TextType } from "components/shared/text/text.component";
+import React, { useEffect, useState } from "react";
+import {
+  MdCheck,
+  MdChevronLeft,
+  MdChevronRight,
+  MdClose,
+  MdLogout,
+} from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
+import { ArrowContainer, Popover } from "react-tiny-popover";
 import { routeGroups } from "__config/routes";
 import { MenuItemCP } from "./menu-item/menu-item.component";
 
@@ -12,6 +21,9 @@ import {
   Title,
   TitleButton,
   MenuContent,
+  RouteGroupContainer,
+  RoutesContainer,
+  MenuAvatarContainer,
 } from "./menu.styles";
 
 interface MenuProps {
@@ -21,6 +33,16 @@ interface MenuProps {
 
 export const MenuCP: React.FC<MenuProps> = ({ isOpen, onClickTrigger }) => {
   const location = useLocation();
+  const [isPopoverOpened, setIsPopoverOpened] = useState(false);
+
+  const [isOpenAfterTreansition, set] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      set(isOpen);
+      // Menu transition is 200 ms
+    }, 192);
+  }, [isOpen]);
 
   return (
     <MenuContainer open={isOpen}>
@@ -37,9 +59,9 @@ export const MenuCP: React.FC<MenuProps> = ({ isOpen, onClickTrigger }) => {
       <MenuContent>
         {routeGroups.map((routeGroup, index) => {
           return (
-            <div key={index} style={{ marginTop: 60 }}>
+            <RouteGroupContainer key={index}>
               <TextCP color={text_secondary}>{routeGroup.label}</TextCP>
-              <div style={{ marginTop: 24 }}>
+              <RoutesContainer>
                 {routeGroup.routes.map(
                   (route) =>
                     route.icon &&
@@ -52,16 +74,39 @@ export const MenuCP: React.FC<MenuProps> = ({ isOpen, onClickTrigger }) => {
                         <MenuItemCP
                           label={route.label}
                           icon={route.icon}
-                          isMenuOpened={isOpen}
+                          isMenuOpened={isOpenAfterTreansition}
                           isSelected={route.path === location.pathname}
                         />
                       </Link>
                     )
                 )}
-              </div>
-            </div>
+              </RoutesContainer>
+            </RouteGroupContainer>
           );
         })}
+        <MenuAvatarContainer isMenuOpened={isOpen}>
+          <AvatarCP
+            reverse={!isOpen}
+            label="Lunares Fotografia"
+            onClick={() => {}}
+            avatar={"👩"}
+          />
+          <PopoverCP
+            isOpen={isPopoverOpened}
+            onConfirm={() => setIsPopoverOpened(false)}
+            onCancel={() => setIsPopoverOpened(false)}
+            onClickOutside={() => setIsPopoverOpened(false)}
+            content={
+              <TextCP type={TextType.TEXT_14}>
+                Tem certeza que deseja sair?
+              </TextCP>
+            }
+          >
+            <TitleButton onClick={() => setIsPopoverOpened(!isPopoverOpened)}>
+              <MdLogout color="#ffffff" size={24} />
+            </TitleButton>
+          </PopoverCP>
+        </MenuAvatarContainer>
       </MenuContent>
     </MenuContainer>
   );

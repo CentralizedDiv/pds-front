@@ -1,4 +1,4 @@
-import { black } from "components/shared/colors";
+import { black, blue } from "components/shared/colors";
 import styled from "styled-components";
 
 interface IProps {
@@ -11,15 +11,15 @@ export const MenuContainer = styled.nav<IProps>`
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-328px)")};
   top: 0;
   left: 0;
-  height: 100vh;
+  // 100vh - 60px - 60px (padding)
+  height: calc(100vh - 120px);
   list-style: none;
   display: flex;
   // 400px - 60px - 48px (padding)
   width: ${({ open }) => 400 - 60 - (open ? 48 : 12) + "px"};
-  padding-top: 60px;
-  padding-left: 60px;
+  padding: 60px;
   padding-right: ${({ open }) => (open ? "48px" : "12px")};
-  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out, width 0.2s ease-in-out;
   position: fixed;
   border-right: 1px solid #3c3c3c;
 `;
@@ -52,5 +52,23 @@ export const TitleButton = styled.div`
 `;
 
 export const MenuContent = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RouteGroupContainer = styled.div`
+  margin-top: 60px;
+`;
+
+export const RoutesContainer = styled.div`
   margin-top: 24px;
+`;
+
+export const MenuAvatarContainer = styled.div<{ isMenuOpened: boolean }>`
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  ${({ isMenuOpened }) => !isMenuOpened && "flex-direction: row-reverse;"}
 `;

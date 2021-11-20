@@ -1,10 +1,15 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useForm } from "react-hook-form";
 import { ButtonCP } from "./button/button.component";
 import { black, light_blue } from "./colors";
+import { InputCP } from "./input/input.component";
 import { ModalCP } from "./modal/modal.component";
 import { PillsCP } from "./pills/pills.component";
 import { TextCP, TextType } from "./text/text.component";
+import { AvatarCP } from "./avatar/avatar.component";
+import { UploaderCP } from "./uploader/uploader/uploader.component";
+import { FileListCP } from "./uploader/file-list/file-list.component";
 
 const pills = [
   {
@@ -27,8 +32,8 @@ const pills = [
 
 const Container = styled.div`
   display: flex;
-  width: calc(100vw - 120px);
-  height: calc(100vh - 120px);
+  flex-direction: column;
+  gap: 24px;
   padding: 60px;
   background-color: ${black};
 `;
@@ -37,12 +42,12 @@ const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-right: 24px;
 `;
 
 export function DisplaySharedComponents() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPills, setSelectedPills] = useState([1]);
+  const { register } = useForm();
 
   return (
     <Container>
@@ -60,7 +65,7 @@ export function DisplaySharedComponents() {
           onClickPill={(id) => setSelectedPills([id])}
         />
       </InnerContainer>
-      <InnerContainer>
+      <InnerContainer style={{ width: 200 }}>
         <ButtonCP onClick={() => setIsModalOpen(true)}>Abrir modal</ButtonCP>
         <ButtonCP ghost={true}>Texto do botão</ButtonCP>
         <ButtonCP
@@ -117,6 +122,44 @@ export function DisplaySharedComponents() {
           Contaúdo do Modal
           <ButtonCP onClick={() => setIsModalOpen(false)}>Fechar</ButtonCP>
         </ModalCP>
+      </InnerContainer>
+      <InnerContainer
+        style={{
+          width: 500,
+          padding: 24,
+          backgroundColor: "#ECECEC",
+          flexDirection: "row",
+          gap: 16,
+        }}
+      >
+        <InputCP
+          {...register("input")}
+          id="1"
+          label="Label do input"
+          type="number"
+          style={{ flex: 1 }}
+        />
+        <InputCP id="2" label="Label do input 2" style={{ flex: 1 }} />
+      </InnerContainer>
+      <InnerContainer>
+        <AvatarCP label="Lunares Fotografia" onClick={() => {}} avatar={"👩"} />
+        <AvatarCP
+          label="Lunares Fotografia"
+          onClick={() => {}}
+          avatar={
+            "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?cs=srgb&dl=pexels-pixabay-415829.jpg&fm=jpg"
+          }
+          avatarType="image"
+        />
+      </InnerContainer>
+      <InnerContainer
+        style={{
+          width: 500,
+          padding: 24,
+          backgroundColor: "#ECECEC",
+        }}
+      >
+        <FileListCP />
       </InnerContainer>
     </Container>
   );

@@ -1,4 +1,5 @@
 import { TextCP } from "components/shared/text/text.component";
+
 import { Button, MenuItemContent, MenuItemName } from "./menu-item.styles";
 
 interface IProps {
@@ -16,7 +17,7 @@ export const MenuItemCP = ({
 }: IProps) => {
   return (
     <Button isMenuOpened={isMenuOpened} isSelected={isSelected}>
-      <MenuItemContent>
+      <MenuItemContent isMenuOpened={isMenuOpened}>
         {icon}
         <MenuItemName>
           <TextCP>{label}</TextCP>

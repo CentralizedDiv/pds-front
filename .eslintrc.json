@@ -5,9 +5,10 @@
     "jest/globals": true
   },
   "extends": [
+    "standard",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "standard",
+    "plugin:react-hooks/recommended",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
@@ -35,8 +36,9 @@
         "endOfLine": "auto"
       }
     ],
+    "react/prop-types": "off",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error"
+    "@typescript-eslint/no-unused-vars": "warn"
   },
   "globals": {
     "JSX": true
