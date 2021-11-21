@@ -1,3 +1,4 @@
+import { BadgeCP } from "components/shared/badge/bade.component";
 import Dashboard from "modules/dashboard/containers/dashboard.container";
 import {
   MdChat,
@@ -50,7 +51,11 @@ export const routeGroups: RouteGroup[] = [
         path: "/notificacoes",
         element: <Dashboard />,
         label: "Notificações",
-        icon: <MdNotifications color="#fff" size={24} />,
+        icon: (
+          <BadgeCP content="3">
+            <MdNotifications color="#fff" size={24} />
+          </BadgeCP>
+        ),
       },
       {
         path: "/comentarios",

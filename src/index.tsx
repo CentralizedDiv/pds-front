@@ -8,6 +8,8 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { DisplaySharedComponents } from "components/shared";
 import { routeGroups } from "__config/routes";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: false } },
@@ -17,21 +19,23 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <Routes>
-          <Route path="/" element={<App />}>
-            {routeGroups.map(({ routes }) =>
-              routes.map((route) => (
-                <Route
-                  key={route.path}
-                  path={route.path}
-                  element={route.element}
-                />
-              ))
-            )}
-            <Route path="*" element={<NotFound />} />
-          </Route>
-          <Route path="/shared" element={<DisplaySharedComponents />} />
-        </Routes>
+        <DndProvider backend={HTML5Backend}>
+          <Routes>
+            <Route path="/" element={<App />}>
+              {routeGroups.map(({ routes }) =>
+                routes.map((route) => (
+                  <Route
+                    key={route.path}
+                    path={route.path}
+                    element={route.element}
+                  />
+                ))
+              )}
+              <Route path="*" element={<NotFound />} />
+            </Route>
+            <Route path="/shared" element={<DisplaySharedComponents />} />
+          </Routes>
+        </DndProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </BrowserRouter>

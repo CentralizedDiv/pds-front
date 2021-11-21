@@ -11,16 +11,24 @@ export const Button = styled.div<IProps>`
   height: 60px;
   border-radius: 8px;
   width: 100%;
-  display: ${({ isMenuOpened }) => (isMenuOpened ? "flex" : "none")};
+  display: flex;
+  justify-content: ${({ isMenuOpened }) =>
+    isMenuOpened ? "flex-end" : "flex-start"};
   align-items: center;
   margin-bottom: 8px;
 `;
 
-export const MenuItemContent = styled.div`
+export const MenuItemContent = styled.div<{ isMenuOpened: boolean }>`
   display: flex;
   width: 100%;
   margin-left: 18px;
   align-items: center;
+  flex-direction: ${({ isMenuOpened }) =>
+    !isMenuOpened ? "row-reverse" : "row"};
+
+  & svg {
+    padding: ${({ isMenuOpened }) => (!isMenuOpened ? "0 12px 0px 24px" : "0")};
+  }
 `;
 
 export const MenuItemName = styled.p`
