@@ -12,5 +12,5 @@ export interface Album extends BaseEntity {
   numberoOfcontractedPhotos: number;
   selectionDeadline: string;
   allowDownload: boolean;
-  watermark: boolean;
+  showWatermark: boolean;
 }
