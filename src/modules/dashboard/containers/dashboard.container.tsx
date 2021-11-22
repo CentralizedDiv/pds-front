@@ -73,12 +73,36 @@ export default function Dashboard() {
        * Call api and loop data throught cards
        */}
       <AlbumsGrid>
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
+        <AlbumCard
+          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+          albumName="Friends Reunion"
+          creationDate="20 Jan 2021"
+        />
+        <AlbumCard
+          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+          albumName="Friends Reunion"
+          creationDate="20 Jan 2021"
+        />
+        <AlbumCard
+          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+          albumName="Friends Reunion"
+          creationDate="20 Jan 2021"
+        />
+        <AlbumCard
+          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+          albumName="Friends Reunion"
+          creationDate="20 Jan 2021"
+        />
+        <AlbumCard
+          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+          albumName="Friends Reunion"
+          creationDate="20 Jan 2021"
+        />
+        <AlbumCard
+          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+          albumName="Friends Reunion"
+          creationDate="20 Jan 2021"
+        />
       </AlbumsGrid>
     </>
   );

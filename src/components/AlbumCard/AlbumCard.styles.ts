@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const AlbumImage = styled.img`
-  border-radius: 10%;
+  border-radius: 16px;
   width: 100%;
   height: 100%;
 `;
@@ -16,5 +16,9 @@ export const AlbumInfoContent = styled.div`
   position: absolute;
   bottom: 8px;
   left: 24px;
-  color: white;
+  margin-bottom: 24px;
+`;
+
+export const AlbumNameContent = styled.div`
+  margin-top: 12px;
 `;
