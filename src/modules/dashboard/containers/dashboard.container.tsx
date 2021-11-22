@@ -4,9 +4,10 @@ import { ModalCP } from "components/shared/modal/modal.component";
 import PageWrapper from "components/shared/page-wrapper/page-wrapper.component";
 import { useCallback, useState } from "react";
 import { MdAdd } from "react-icons/md";
-import { TitleContent, PillsContent } from "./dashboard.styles";
+import { TitleContent, PillsContent, AlbumsGrid } from "./dashboard.styles";
 import { TextCP, TextType } from "components/shared/text/text.component";
 import { PillsCP } from "components/shared/pills/pills.component";
+import AlbumCard from "components/AlbumCard";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -68,6 +69,17 @@ export default function Dashboard() {
           onClickPill={(id) => setSelectedPills([id])}
         />
       </PillsContent>
+      {/**TODO
+       * Call api and loop data throught cards
+       */}
+      <AlbumsGrid>
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+      </AlbumsGrid>
     </>
   );
 }
