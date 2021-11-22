@@ -4,6 +4,8 @@ import { ModalCP } from "components/shared/modal/modal.component";
 import PageWrapper from "components/shared/page-wrapper/page-wrapper.component";
 import { useCallback, useState } from "react";
 import { MdAdd } from "react-icons/md";
+import { TitleContent } from "./dashboard.styles";
+import { TextCP, TextType } from "components/shared/text/text.component";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,6 +37,9 @@ export default function Dashboard() {
         onOk={handleCreateNewAlbum}
         okLabel="Criar álbum"
       ></ModalCP>
+      <TitleContent>
+        <TextCP type={TextType.HEADING_24}>Heading 24</TextCP>
+      </TitleContent>
     </>
   );
 }
