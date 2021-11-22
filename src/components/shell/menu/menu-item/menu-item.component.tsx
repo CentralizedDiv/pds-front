@@ -1,5 +1,4 @@
 import { TextCP } from "components/shared/text/text.component";
-
 import { Button, MenuItemContent, MenuItemName } from "./menu-item.styles";
 
 interface IProps {
