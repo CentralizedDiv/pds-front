@@ -6,7 +6,7 @@ interface IProps {
 }
 
 export const MenuContainer = styled.nav<IProps>`
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   background-color: ${black};
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-328px)")};
   top: 0;
@@ -24,10 +24,12 @@ export const MenuContainer = styled.nav<IProps>`
   border-right: 1px solid #3c3c3c;
 `;
 
-export const TitleContainer = styled.div`
+export const TitleContainer = styled.div<{ align?: "center" | "flex-start" }>`
   display: flex;
-  align-items: center;
+  align-items: ${({ align = "center" }) => align};
   justify-content: space-between;
+
+  flex: 1;
 `;
 
 export const Title = styled.p`

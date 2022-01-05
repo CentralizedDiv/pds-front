@@ -39,15 +39,17 @@ export const MenuCP: React.FC<MenuProps> = ({ isOpen, onClickTrigger }) => {
 
   return (
     <MenuContainer open={isOpen}>
-      <TitleContainer>
-        <Title>🌟 Seleto</Title>
-        <TitleButton onClick={onClickTrigger}>
-          {isOpen ? (
-            <MdChevronLeft size={36} color="#ffffff" />
-          ) : (
-            <MdChevronRight size={36} color="#ffffff" />
-          )}
-        </TitleButton>
+      <TitleContainer align="flex-start">
+        <TitleContainer>
+          <Title>🌟 Seleto</Title>
+          <TitleButton onClick={onClickTrigger}>
+            {isOpen ? (
+              <MdChevronLeft size={36} color="#ffffff" />
+            ) : (
+              <MdChevronRight size={36} color="#ffffff" />
+            )}
+          </TitleButton>
+        </TitleContainer>
       </TitleContainer>
       <MenuContent>
         {routeGroups.map((routeGroup, index) => {

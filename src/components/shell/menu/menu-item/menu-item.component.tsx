@@ -1,5 +1,10 @@
 import { TextCP } from "components/shared/text/text.component";
-import { Button, MenuItemContent, MenuItemName } from "./menu-item.styles";
+import {
+  Button,
+  HiddenIcon,
+  MenuItemContent,
+  MenuItemName,
+} from "./menu-item.styles";
 
 interface IProps {
   label: string;
@@ -15,12 +20,13 @@ export const MenuItemCP = ({
   isSelected,
 }: IProps) => {
   return (
-    <Button isMenuOpened={isMenuOpened} isSelected={isSelected}>
-      <MenuItemContent isMenuOpened={isMenuOpened}>
+    <Button isSelected={isSelected}>
+      <MenuItemContent>
         {icon}
         <MenuItemName>
           <TextCP>{label}</TextCP>
         </MenuItemName>
+        {!isMenuOpened && <HiddenIcon>{icon}</HiddenIcon>}
       </MenuItemContent>
     </Button>
   );

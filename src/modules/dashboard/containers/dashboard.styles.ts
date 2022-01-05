@@ -13,9 +13,7 @@ export const PillsContent = styled.div`
 
 export const AlbumsGrid = styled.div`
   display: grid;
-  margin-left: 60px;
-  margin-right: 60px;
-  margin-top: 48px;
+  margin: 48px 60px 60px;
   grid-gap: 24px;
-  grid-template-columns: 440px 440px 440px;
+  grid-template-columns: repeat(3, 1fr);
 `;

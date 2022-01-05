@@ -5,8 +5,8 @@ import {
   AlbumImage,
   AlbumInfoContent,
   AlbumNameContent,
-} from "./AlbumCard.styles";
-import AlbumCard from "./AlbumCard.component";
+} from "../album-card.styles";
+import { AlbumCard } from "../album-card.component";
 
 describe("AlbumCard", () => {
   const props = {
