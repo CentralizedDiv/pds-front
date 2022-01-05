@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import { shallow } from "enzyme";
 import PageWrapper from "components/shared/page-wrapper/page-wrapper.component";
 import { ModalCP } from "components/shared/modal/modal.component";
-import Dashboard from "./dashboard.container";
+import Dashboard from "modules/dashboard/containers/dashboard.container";
 
 describe("MenuItemCP", () => {
   const mockSetState = jest.fn();
@@ -10,12 +10,15 @@ describe("MenuItemCP", () => {
   beforeEach(() => {
     jest
       .spyOn(React, "useState")
-      .mockImplementation((value) => [value, mockSetState]);
+      .mockImplementation(((value: any) => [value, mockSetState]) as () => [
+        unknown,
+        Dispatch<unknown>
+      ]);
   });
 
   it("Should handle ModalCP onCancel correctly", () => {
     const wrapper = shallow(<Dashboard />);
-    const newAlbumButton = wrapper.find(PageWrapper).prop("headerRight").props;
+    const newAlbumButton = wrapper.find(PageWrapper).prop("headerRight")?.props;
     newAlbumButton.onClick();
 
     expect(mockSetState).toHaveBeenCalledTimes(1);
