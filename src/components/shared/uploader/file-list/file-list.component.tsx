@@ -3,6 +3,7 @@ import { black } from "components/shared/colors";
 import { ProgressBarCP } from "components/shared/progress-bar/progress-bar.component";
 import { TextCP, TextType } from "components/shared/text/text.component";
 import React, { useCallback, useMemo, useState } from "react";
+import { axiosInstance } from "__config/axios";
 import { FileListItemCP } from "../file-list-item/file-list-item.component";
 import { UploaderCP } from "../uploader/uploader.component";
 import {
@@ -47,8 +48,8 @@ export const FileListCP: React.FC<FileListProps> = ({ multiple = true }) => {
         data.append("file", uploadedFile.file, uploadedFile.file.name);
       }
 
-      axios
-        .post("http://localhost:3002/upload", data, {
+      axiosInstance
+        .post("/photo/upload", data, {
           onUploadProgress: (progressEvent) => {
             const progress: number = Math.round(
               (progressEvent.loaded * 100) / progressEvent.total

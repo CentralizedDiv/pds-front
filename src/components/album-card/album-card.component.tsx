@@ -4,7 +4,7 @@ import {
   AlbumImage,
   AlbumInfoContent,
   AlbumNameContent,
-} from "./AlbumCard.styles";
+} from "./album-card.styles";
 
 interface IProps {
   albumCoverImage: string;
@@ -12,7 +12,11 @@ interface IProps {
   creationDate: string;
 }
 
-const AlbumCard = ({ albumCoverImage, albumName, creationDate }: IProps) => {
+export const AlbumCard = ({
+  albumCoverImage,
+  albumName,
+  creationDate,
+}: IProps) => {
   return (
     <Container>
       <AlbumImage src={albumCoverImage} />
@@ -27,5 +31,3 @@ const AlbumCard = ({ albumCoverImage, albumName, creationDate }: IProps) => {
     </Container>
   );
 };
-
-export default AlbumCard;
