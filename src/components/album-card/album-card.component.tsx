@@ -18,7 +18,7 @@ export const AlbumCard = ({
   creationDate,
 }: IProps) => {
   return (
-    <Container>
+    <Container to={`/albuns/${albumName}`}>
       <AlbumImage src={albumCoverImage} />
       <AlbumInfoContent>
         <div>

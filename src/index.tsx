@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { App, NotFound } from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { DisplaySharedComponents } from "components/shared";
@@ -27,8 +27,29 @@ ReactDOM.render(
                   <Route
                     key={route.path}
                     path={route.path}
-                    element={route.element}
-                  />
+                    element={
+                      route.children ? (
+                        <>
+                          <Outlet />
+                        </>
+                      ) : (
+                        route.element
+                      )
+                    }
+                  >
+                    {route.children ? (
+                      <>
+                        {route.children.map((child) => (
+                          <Route
+                            key={child.path}
+                            path={child.path}
+                            element={child.element}
+                          />
+                        ))}
+                        <Route index element={route.element} />
+                      </>
+                    ) : null}
+                  </Route>
                 ))
               )}
               <Route path="*" element={<NotFound />} />

@@ -18,6 +18,7 @@ interface ModalProps {
   title: string;
   cancelLabel?: string;
   okLabel?: string;
+  okIcon?: JSX.Element;
   onCancel: () => void;
   onOk?: () => void;
 }
@@ -45,6 +46,7 @@ export const ModalCP: React.FC<PropsWithChildren<ModalProps>> = ({
   title,
   cancelLabel = "Voltar",
   okLabel,
+  okIcon = <MdCheck size={16} color="#ffffff" />,
   onCancel,
   onOk,
   children,
@@ -71,9 +73,7 @@ export const ModalCP: React.FC<PropsWithChildren<ModalProps>> = ({
           {okLabel && onOk && (
             <FooterActionContainer onClick={onOk}>
               <TextCP>{okLabel}</TextCP>
-              <FooterActionIconContainer>
-                <MdCheck size={16} color="#ffffff" />
-              </FooterActionIconContainer>
+              <FooterActionIconContainer>{okIcon}</FooterActionIconContainer>
             </FooterActionContainer>
           )}
         </Footer>

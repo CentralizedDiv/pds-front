@@ -40,7 +40,7 @@ export const MenuCP: React.FC<MenuProps> = ({ isOpen, onClickTrigger }) => {
   return (
     <MenuContainer open={isOpen}>
       <TitleContainer align="flex-start">
-        <TitleContainer>
+        <TitleContainer fullWidth>
           <Title>🌟 Seleto</Title>
           <TitleButton onClick={onClickTrigger}>
             {isOpen ? (
@@ -70,7 +70,7 @@ export const MenuCP: React.FC<MenuProps> = ({ isOpen, onClickTrigger }) => {
                           label={route.label}
                           icon={route.icon}
                           isMenuOpened={isOpenAfterTreansition}
-                          isSelected={route.path === location.pathname}
+                          isSelected={location.pathname.includes(route.path)}
                         />
                       </Link>
                     )
@@ -79,30 +79,30 @@ export const MenuCP: React.FC<MenuProps> = ({ isOpen, onClickTrigger }) => {
             </RouteGroupContainer>
           );
         })}
-        <MenuAvatarContainer isMenuOpened={isOpen}>
-          <AvatarCP
-            reverse={!isOpen}
-            label="Lunares Fotografia"
-            onClick={() => {}}
-            avatar={"👩"}
-          />
-          <PopoverCP
-            isOpen={isPopoverOpened}
-            onConfirm={() => setIsPopoverOpened(false)}
-            onCancel={() => setIsPopoverOpened(false)}
-            onClickOutside={() => setIsPopoverOpened(false)}
-            content={
-              <TextCP type={TextType.TEXT_14}>
-                Tem certeza que deseja sair?
-              </TextCP>
-            }
-          >
-            <TitleButton onClick={() => setIsPopoverOpened(!isPopoverOpened)}>
-              <MdLogout color="#ffffff" size={24} />
-            </TitleButton>
-          </PopoverCP>
-        </MenuAvatarContainer>
       </MenuContent>
+      <MenuAvatarContainer isMenuOpened={isOpen}>
+        <AvatarCP
+          reverse={!isOpen}
+          label="Lunares Fotografia"
+          onClick={() => {}}
+          avatar={"👩"}
+        />
+        <PopoverCP
+          isOpen={isPopoverOpened}
+          onConfirm={() => setIsPopoverOpened(false)}
+          onCancel={() => setIsPopoverOpened(false)}
+          onClickOutside={() => setIsPopoverOpened(false)}
+          content={
+            <TextCP type={TextType.TEXT_14}>
+              Tem certeza que deseja sair?
+            </TextCP>
+          }
+        >
+          <TitleButton onClick={() => setIsPopoverOpened(!isPopoverOpened)}>
+            <MdLogout color="#ffffff" size={24} />
+          </TitleButton>
+        </PopoverCP>
+      </MenuAvatarContainer>
     </MenuContainer>
   );
 };

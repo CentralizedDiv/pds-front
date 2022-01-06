@@ -1,4 +1,5 @@
 import { BadgeCP } from "components/shared/badge/bade.component";
+import Album from "modules/album/containers/album.container";
 import Dashboard from "modules/dashboard/containers/dashboard.container";
 import {
   MdChat,
@@ -13,6 +14,7 @@ export interface Route {
   element: JSX.Element;
   label?: string;
   icon?: JSX.Element;
+  children?: Route[];
 }
 
 export interface RouteGroup {
@@ -29,6 +31,12 @@ export const routeGroups: RouteGroup[] = [
         element: <Dashboard />,
         label: "Álbuns",
         icon: <MdPhotoLibrary color="#fff" size={24} />,
+        children: [
+          {
+            path: ":albumId",
+            element: <Album />,
+          },
+        ],
       },
       {
         path: "/perfil",
