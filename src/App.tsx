@@ -1,10 +1,12 @@
 import { error } from "components/shared/colors";
 import { TextCP, TextType } from "components/shared/text/text.component";
 import { ShellCP } from "components/shell/shell.component";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 export function App() {
+  const location = useLocation();
+  if (location.pathname === "/") return <Navigate to="/albuns" replace />;
   return <ShellCP />;
 }
 
