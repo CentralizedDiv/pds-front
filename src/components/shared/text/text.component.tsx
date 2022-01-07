@@ -7,6 +7,7 @@ export enum TextType {
   HEADING_24 = "HEADING_24",
   TEXT_16 = "TEXT_16",
   TEXT_14 = "TEXT_14",
+  TEXT_12 = "TEXT_12",
 }
 
 interface TextProps {
@@ -45,6 +46,10 @@ export const TextCP: React.FC<PropsWithChildren<TextProps>> = ({
       break;
     case TextType.TEXT_14:
       size = "14px";
+      weight = 400;
+      break;
+    case TextType.TEXT_12:
+      size = "12px";
       weight = 400;
       break;
     default:

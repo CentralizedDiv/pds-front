@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import ReactModal from "react-modal";
-import { black } from "../colors";
+import { black, light_blue, white } from "../colors";
 import { TextCP, TextType } from "../text/text.component";
 import {
   Container,
@@ -11,7 +11,7 @@ import {
   TitleContainer,
 } from "./modal.styles";
 
-import { MdCheck, MdClose } from "react-icons/md";
+import { MdBlock, MdCheck, MdClose } from "react-icons/md";
 
 interface ModalProps {
   isOpen: boolean;
@@ -21,25 +21,11 @@ interface ModalProps {
   okIcon?: JSX.Element;
   onCancel: () => void;
   onOk?: () => void;
+
+  disabled?: boolean;
 }
 
 if (process.env.NODE_ENV !== "test") ReactModal.setAppElement("#root");
-
-const overlayStyles = {
-  backgroundColor: "rgba(0,0,0,0.85)",
-};
-
-const contentStyles = {
-  border: "none",
-  background: "#ECECEC",
-  width: "500px",
-  height: "600px",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  borderRadius: "16px",
-  padding: 0,
-};
 
 export const ModalCP: React.FC<PropsWithChildren<ModalProps>> = ({
   isOpen,
@@ -49,12 +35,34 @@ export const ModalCP: React.FC<PropsWithChildren<ModalProps>> = ({
   okIcon = <MdCheck size={16} color="#ffffff" />,
   onCancel,
   onOk,
+  disabled = false,
   children,
 }) => {
   return (
     <ReactModal
       isOpen={isOpen}
-      style={{ overlay: overlayStyles, content: contentStyles }}
+      className="modal-content"
+      style={{
+        overlay: {
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(0,0,0,0.85)",
+        },
+        content: {
+          position: "absolute",
+          border: "none",
+          background: "#ECECEC",
+          borderRadius: "16px",
+          padding: 0,
+          width: 500,
+          transform: "translate(-50%, -50%)",
+          top: "50%",
+          left: "50%",
+        },
+      }}
     >
       <Container>
         <TitleContainer>
@@ -71,9 +79,15 @@ export const ModalCP: React.FC<PropsWithChildren<ModalProps>> = ({
             <TextCP>{cancelLabel}</TextCP>
           </FooterActionContainer>
           {okLabel && onOk && (
-            <FooterActionContainer onClick={onOk}>
-              <TextCP>{okLabel}</TextCP>
-              <FooterActionIconContainer>{okIcon}</FooterActionIconContainer>
+            <FooterActionContainer
+              onClick={() => (disabled ? undefined : onOk())}
+            >
+              <TextCP color={disabled ? light_blue : white}>{okLabel}</TextCP>
+              {disabled ? (
+                <MdBlock size={20} color={light_blue} />
+              ) : (
+                <FooterActionIconContainer>{okIcon}</FooterActionIconContainer>
+              )}
             </FooterActionContainer>
           )}
         </Footer>
