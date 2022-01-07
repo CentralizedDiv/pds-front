@@ -1,4 +1,4 @@
-import { generateRandomString } from "utils/functions";
+import { generateRandomString, isValidEmail } from "utils/functions";
 
 describe("Test util functions", () => {
   it("[Generate Random String] Should return a string with default length of 12", () => {
@@ -26,5 +26,17 @@ describe("Test util functions", () => {
     expect(haveUpper).toBe(true);
     expect(haveNumber).toBe(true);
     expect(haveSpecial).toBe(true);
+  });
+
+  it("[Is Valid Email] Should correctly validate emails", () => {
+    expect(isValidEmail(undefined as unknown as string)).toBe(false);
+    expect(isValidEmail("@gmail.com")).toBe(false);
+    expect(isValidEmail("seletogmail.com")).toBe(false);
+    expect(isValidEmail("seleto@gmail.")).toBe(false);
+    expect(isValidEmail("seleto@.com")).toBe(false);
+
+    expect(isValidEmail("seleto@gmail.com")).toBe(true);
+    expect(isValidEmail("seleto@gmail.com.br")).toBe(true);
+    expect(isValidEmail("contato@seleto.me")).toBe(true);
   });
 });
