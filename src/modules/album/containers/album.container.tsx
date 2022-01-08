@@ -241,6 +241,7 @@ export default function Album() {
         onCancel={() => setIsAddPhotoModalOpen(false)}
         onOk={handleAddPhoto}
         okLabel="Fazer upload"
+        data-testid="add-photo-modal"
       >
         <AddPhotoModalContainer>
           <FileListCP />
