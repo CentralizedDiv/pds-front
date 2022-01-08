@@ -29,3 +29,7 @@ export const PhotosContainer = styled.div`
   grid-gap: 18px;
   grid-template-columns: repeat(3, 1fr);
 `;
+
+export const AddPhotoModalContainer = styled.div`
+  margin: 32px 0px;
+`;
