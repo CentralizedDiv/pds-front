@@ -10,6 +10,7 @@ import { DisplaySharedComponents } from "components/shared";
 import { routeGroups } from "__config/routes";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { AlbumClient } from "modules/album-client/containers/album-client.container";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: false } },
@@ -52,9 +53,12 @@ ReactDOM.render(
                   </Route>
                 ))
               )}
-              <Route path="*" element={<NotFound />} />
             </Route>
             <Route path="/shared" element={<DisplaySharedComponents />} />
+            <Route path="/cliente">
+              <Route path="albuns/:albumId" element={<AlbumClient />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </DndProvider>
         <ReactQueryDevtools initialIsOpen={false} />

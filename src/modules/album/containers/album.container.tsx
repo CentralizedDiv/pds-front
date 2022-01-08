@@ -9,8 +9,14 @@ import { TextCP, TextType } from "components/shared/text/text.component";
 import { PillsContent } from "modules/dashboard/containers/dashboard.styles";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { MdCloudUpload, MdContentCopy, MdLink, MdSend } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import {
+  MdCloudUpload,
+  MdContentCopy,
+  MdLink,
+  MdSend,
+  MdVisibility,
+} from "react-icons/md";
+import { Link, useParams } from "react-router-dom";
 import { isValidEmail, generateRandomString } from "utils/functions";
 import { PhotoCardCP } from "../components/photo-card/photo-card.component";
 import { FileListCP } from "components/shared/uploader/file-list/file-list.component";
@@ -21,6 +27,7 @@ import {
   CopiedContainer,
   PhotosContainer,
   AddPhotoModalContainer,
+  ActionsContainer,
 } from "./album.styles";
 
 interface LinkFormValues {
@@ -137,17 +144,34 @@ export default function Album() {
         </ButtonCP>
       }
     >
-      <ButtonCP
-        secondary
-        icon={
-          <IconCircle secondary>
-            <MdLink color={"#ffffff"} size={16} />
-          </IconCircle>
-        }
-        onClick={() => setIsGenerateLinkModalOpen(true)}
-      >
-        Gerar Link
-      </ButtonCP>
+      <ActionsContainer>
+        <ButtonCP
+          secondary
+          icon={
+            <IconCircle secondary>
+              <MdLink color={"#ffffff"} size={16} />
+            </IconCircle>
+          }
+          onClick={() => setIsGenerateLinkModalOpen(true)}
+        >
+          Gerar Link
+        </ButtonCP>
+        <Link
+          to={`/cliente/albuns/${params.albumId}`}
+          style={{ textDecoration: "none" }}
+        >
+          <ButtonCP
+            secondary
+            icon={
+              <IconCircle secondary>
+                <MdVisibility color={"#ffffff"} size={16} />
+              </IconCircle>
+            }
+          >
+            Pré-visualizar
+          </ButtonCP>
+        </Link>
+      </ActionsContainer>
       <PillsContent>
         <PillsCP
           data={pills}
