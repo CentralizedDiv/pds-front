@@ -6,3 +6,4 @@ export const success = "#26e087";
 export const error = "#e14864";
 export const text_secondary = "#9f9f9f";
 export const light_background = "rgba(255,255,255,0.1)";
+export const red = "#f03636";

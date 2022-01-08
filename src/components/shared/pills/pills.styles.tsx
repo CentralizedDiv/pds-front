@@ -20,5 +20,5 @@ export const Pill = styled.div<PillProps>`
 
 export const Container = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 8px;
 `;

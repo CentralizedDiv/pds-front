@@ -7,7 +7,7 @@ import { MdAdd } from "react-icons/md";
 import { TitleContent, PillsContent, AlbumsGrid } from "./dashboard.styles";
 import { TextCP, TextType } from "components/shared/text/text.component";
 import { PillsCP } from "components/shared/pills/pills.component";
-import { AlbumCard } from "components/album-card/album-card.component";
+import { AlbumCard } from "modules/dashboard/components/album-card/album-card.component";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
