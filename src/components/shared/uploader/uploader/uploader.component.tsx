@@ -66,6 +66,8 @@ export const UploaderCP: React.FC<UploaderProps> = ({
       if (!multiple && files.length > 1) {
         setError("Escolha apenas um arquivo.");
         return;
+      } else {
+        setError(null);
       }
       const allValidFiles = Array.from(files).every((file) =>
         validImageTypes.includes(file.type)
@@ -75,6 +77,8 @@ export const UploaderCP: React.FC<UploaderProps> = ({
           "Escolha apenas arquivos de imagem válidos (jpg, jpeg, png, raw, cr2)"
         );
         return;
+      } else {
+        setError(null);
       }
       onDrop(files);
     },

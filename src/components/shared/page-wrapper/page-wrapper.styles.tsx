@@ -5,7 +5,7 @@ export const PageWrapperContainer = styled.div`
 `;
 
 export const PageWrapperContent = styled.div`
-  margin-bottom: 80px;
+  padding-top: 30px;
 `;
 
 export const PageWrapperHeader = styled.div`

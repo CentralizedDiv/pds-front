@@ -50,60 +50,61 @@ export default function Dashboard() {
             Novo álbum
           </ButtonCP>
         }
-      />
-      <ModalCP
-        isOpen={isModalOpen}
-        title="Novo álbum"
-        cancelLabel="Cancelar"
-        onCancel={() => setIsModalOpen(false)}
-        onOk={handleCreateNewAlbum}
-        okLabel="Criar álbum"
-      ></ModalCP>
-      <TitleContent>
-        <TextCP type={TextType.HEADING_24}>6 Álbuns</TextCP>
-      </TitleContent>
-      <PillsContent>
-        <PillsCP
-          data={pills}
-          selectedIds={selectedPills}
-          onClickPill={(id) => setSelectedPills([id])}
-        />
-      </PillsContent>
-      {/** TODO
-       * Call api and loop data throught cards
-       */}
-      <AlbumsGrid>
-        <AlbumCard
-          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
-          albumName="Friends Reunion"
-          creationDate="20 Jan 2021"
-        />
-        <AlbumCard
-          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
-          albumName="Friends Reunion"
-          creationDate="20 Jan 2021"
-        />
-        <AlbumCard
-          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
-          albumName="Friends Reunion"
-          creationDate="20 Jan 2021"
-        />
-        <AlbumCard
-          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
-          albumName="Friends Reunion"
-          creationDate="20 Jan 2021"
-        />
-        <AlbumCard
-          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
-          albumName="Friends Reunion"
-          creationDate="20 Jan 2021"
-        />
-        <AlbumCard
-          albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
-          albumName="Friends Reunion"
-          creationDate="20 Jan 2021"
-        />
-      </AlbumsGrid>
+      >
+        <ModalCP
+          isOpen={isModalOpen}
+          title="Novo álbum"
+          cancelLabel="Cancelar"
+          onCancel={() => setIsModalOpen(false)}
+          onOk={handleCreateNewAlbum}
+          okLabel="Criar álbum"
+        ></ModalCP>
+        <TitleContent>
+          <TextCP type={TextType.HEADING_24}>6 Álbuns</TextCP>
+        </TitleContent>
+        <PillsContent>
+          <PillsCP
+            data={pills}
+            selectedIds={selectedPills}
+            onClickPill={(id) => setSelectedPills([id])}
+          />
+        </PillsContent>
+        {/** TODO
+         * Call api and loop data throught cards
+         */}
+        <AlbumsGrid>
+          <AlbumCard
+            albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+            albumName="Friends Reunion"
+            creationDate="20 Jan 2021"
+          />
+          <AlbumCard
+            albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+            albumName="Friends Reunion"
+            creationDate="20 Jan 2021"
+          />
+          <AlbumCard
+            albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+            albumName="Friends Reunion"
+            creationDate="20 Jan 2021"
+          />
+          <AlbumCard
+            albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+            albumName="Friends Reunion"
+            creationDate="20 Jan 2021"
+          />
+          <AlbumCard
+            albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+            albumName="Friends Reunion"
+            creationDate="20 Jan 2021"
+          />
+          <AlbumCard
+            albumCoverImage="https://ichef.bbci.co.uk/news/640/cpsprodpb/15744/production/_118667878_ka_05_friendsreunion.jpg"
+            albumName="Friends Reunion"
+            creationDate="20 Jan 2021"
+          />
+        </AlbumsGrid>
+      </PageWrapper>
     </>
   );
 }

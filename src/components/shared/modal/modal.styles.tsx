@@ -5,7 +5,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 24px;
-  height: calc(600px - 48px);
 `;
 
 export const TitleContainer = styled.div`
@@ -20,12 +19,13 @@ export const Footer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 -24px -24px;
+  margin: 24px -24px -24px;
 `;
 
 export const Content = styled.div`
   overflow: auto;
   flex: 1;
+  max-height: calc(100vh - 170px);
 `;
 
 export const FooterActionContainer = styled.div`

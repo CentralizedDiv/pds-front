@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   position: relative;
 `;
 
@@ -14,7 +15,6 @@ export const AlbumInfoContent = styled.div`
   position: absolute;
   bottom: 8px;
   left: 24px;
-  margin-bottom: 24px;
 `;
 
 export const AlbumNameContent = styled.div`

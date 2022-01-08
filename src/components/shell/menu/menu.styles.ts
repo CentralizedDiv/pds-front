@@ -6,7 +6,7 @@ interface IProps {
 }
 
 export const MenuContainer = styled.nav<IProps>`
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   background-color: ${black};
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-328px)")};
   top: 0;
@@ -24,12 +24,14 @@ export const MenuContainer = styled.nav<IProps>`
   border-right: 1px solid #3c3c3c;
 `;
 
-export const TitleContainer = styled.div<{ align?: "center" | "flex-start" }>`
+export const TitleContainer = styled.div<{
+  align?: "center" | "flex-start";
+  fullWidth?: boolean;
+}>`
   display: flex;
   align-items: ${({ align = "center" }) => align};
+  flex: ${({ fullWidth }) => (fullWidth ? 1 : 0)};
   justify-content: space-between;
-
-  flex: 1;
 `;
 
 export const Title = styled.p`
@@ -57,10 +59,12 @@ export const MenuContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+
+  overflow: auto;
 `;
 
 export const RouteGroupContainer = styled.div`
-  margin-top: 60px;
+  margin-top: 24px;
 `;
 
 export const RoutesContainer = styled.div`
@@ -68,9 +72,9 @@ export const RoutesContainer = styled.div`
 `;
 
 export const MenuAvatarContainer = styled.div<{ isMenuOpened: boolean }>`
-  flex: 1;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  margin-top: 24px;
   ${({ isMenuOpened }) => !isMenuOpened && "flex-direction: row-reverse;"}
 `;
