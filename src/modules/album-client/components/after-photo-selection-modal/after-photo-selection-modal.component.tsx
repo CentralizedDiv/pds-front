@@ -4,7 +4,7 @@ import { TextCP } from "components/shared/text/text.component";
 import React from "react";
 
 interface CommentsModalProps {
-  photographerName?: string;
+  photographerName: string;
   isOpen: boolean;
   onCancel: () => void;
 }

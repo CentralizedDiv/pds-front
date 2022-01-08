@@ -59,24 +59,26 @@ export function AlbumClient() {
       <CarouselCP
         photos={[]}
         isOpen={UIState.showCarousel}
+        onClose={() => toggleUIState("showCarousel")}
         allowEdit={true}
         onToggleFavorite={onToggleFavorite}
         onTogglePreSelect={onTogglePreSelect}
       />
       <AfterPhotoSelectionModalCP
+        photographerName="Fotógrafo"
         isOpen={UIState.showAfterPhotoSelectionModal}
         onCancel={() => toggleUIState("showAfterPhotoSelectionModal")}
       />
       <SelectedPhotosModalCP
         isOpen={UIState.showSelectedPhotosModal}
-        onCancel={() => toggleUIState("showAfterPhotoSelectionModal")}
+        onCancel={() => toggleUIState("showSelectedPhotosModal")}
         photos={[]}
         onTogglePreSelect={onTogglePreSelect}
         onFinishSelection={onFinishSelection}
       />
       <CommentsModalCP
         isOpen={UIState.showCommentsModal}
-        onCancel={() => toggleUIState("showAfterPhotoSelectionModal")}
+        onCancel={() => toggleUIState("showCommentsModal")}
         context={CommentsModalContext.PHOTO}
         comments={[]}
         onSendMessage={onSendMessage}

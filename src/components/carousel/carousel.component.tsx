@@ -9,6 +9,7 @@ interface BaseProps {
   }[];
   allowEdit: boolean;
   isOpen: boolean;
+  onClose: () => void;
 }
 
 interface NotAllowedEditProps {
@@ -23,6 +24,6 @@ interface AllowedEditProps {
 
 type CarouselProps = BaseProps & (NotAllowedEditProps | AllowedEditProps);
 
-export const CarouselCP: React.FC<CarouselProps> = ({ isOpen }) => {
-  return isOpen ? <h1>Carousel</h1> : null;
+export const CarouselCP: React.FC<CarouselProps> = ({ isOpen, onClose }) => {
+  return isOpen ? <h1 onClick={onClose}>Carousel</h1> : null;
 };
