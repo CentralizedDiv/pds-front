@@ -13,12 +13,14 @@ import { MdCloudUpload, MdContentCopy, MdLink, MdSend } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { isValidEmail, generateRandomString } from "utils/functions";
 import { PhotoCardCP } from "../components/photo-card/photo-card.component";
+import { FileListCP } from "components/shared/uploader/file-list/file-list.component";
 import {
   InputContainer,
   InputPassContainer,
   GeneratePassword,
   CopiedContainer,
   PhotosContainer,
+  AddPhotoModalContainer,
 } from "./album.styles";
 
 interface LinkFormValues {
@@ -81,13 +83,15 @@ export default function Album() {
   const params = useParams();
   const [filteredPhotos, setFilteredPhotos] = useState(photos);
   const [showCopied, setShowCopied] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isGenerateLinkModalOpen, setIsGenerateLinkModalOpen] = useState(false);
+  const [isAddPhotoModalOpen, setIsAddPhotoModalOpen] = useState(false);
   const { register, setValue, watch } = useForm<LinkFormValues>();
   const watchLinkFields = watch(["clientEmail", "albumPassword"]);
   const isLinkFormValid =
     isValidEmail(watchLinkFields[0]) && !!watchLinkFields[1];
 
   const handleSendLink = useCallback(() => {}, []);
+  const handleAddPhoto = useCallback(() => {}, []);
   const copyInfoToClipboard = useCallback(() => {
     if (navigator.clipboard && watchLinkFields[1]) {
       navigator.clipboard.writeText(`
@@ -127,6 +131,7 @@ export default function Album() {
               <MdCloudUpload color={"#ffffff"} size={16} />
             </IconCircle>
           }
+          onClick={() => setIsAddPhotoModalOpen(true)}
         >
           Adicionar fotos
         </ButtonCP>
@@ -139,7 +144,7 @@ export default function Album() {
             <MdLink color={"#ffffff"} size={16} />
           </IconCircle>
         }
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => setIsGenerateLinkModalOpen(true)}
       >
         Gerar Link
       </ButtonCP>
@@ -162,9 +167,9 @@ export default function Album() {
         ))}
       </PhotosContainer>
       <ModalCP
-        isOpen={isModalOpen}
+        isOpen={isGenerateLinkModalOpen}
         title="Gerar Link"
-        onCancel={() => setIsModalOpen(false)}
+        onCancel={() => setIsGenerateLinkModalOpen(false)}
         onOk={handleSendLink}
         okLabel="Enviar para o cliente"
         okIcon={<MdSend size={16} color="#ffffff" style={{ marginLeft: 2 }} />}
@@ -229,6 +234,17 @@ export default function Album() {
             Copiado!
           </TextCP>
         </CopiedContainer>
+      </ModalCP>
+      <ModalCP
+        isOpen={isAddPhotoModalOpen}
+        title="Upload de fotos"
+        onCancel={() => setIsAddPhotoModalOpen(false)}
+        onOk={handleAddPhoto}
+        okLabel="Fazer upload"
+      >
+        <AddPhotoModalContainer>
+          <FileListCP />
+        </AddPhotoModalContainer>
       </ModalCP>
     </PageWrapper>
   );
