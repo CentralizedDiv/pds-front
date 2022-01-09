@@ -4,6 +4,7 @@ import {
   CommentsModalCP,
 } from "components/comments-modal/comments-modal.component";
 import { ButtonCP } from "components/shared/button/button.component";
+import { Comment } from "models/comment.model";
 import { useCallback, useState } from "react";
 import { AfterPhotoSelectionModalCP } from "../components/after-photo-selection-modal/after-photo-selection-modal.component";
 import { SelectedPhotosModalCP } from "../components/selected-photos-modal/seletected-photos-modal.component";
@@ -55,6 +56,42 @@ export function AlbumClient() {
       isSelected: false,
     },
   ]);
+  const [comments, setComments] = useState([
+    {
+      id: "1",
+      content: "Comentário do cliente",
+      photo: {
+        id: "4",
+        name: "IMG-4",
+        url: "https://images.pexels.com/photos/9632415/pexels-photo-9632415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      },
+      album: {
+        id: "1",
+        name: "Nome do álbum",
+      },
+      createdBy: {
+        id: "1",
+        name: "Cliente",
+      },
+    },
+    {
+      id: "2",
+      content: "Comentário do fotógrafo",
+      photo: {
+        id: "4",
+        name: "IMG-4",
+        url: "https://images.pexels.com/photos/9632415/pexels-photo-9632415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      },
+      album: {
+        id: "1",
+        name: "Nome do álbum",
+      },
+      createdBy: {
+        id: "2",
+        name: "Fotógrafo",
+      },
+    },
+  ]);
   const [UIState, setUIState] = useState<UIState>(initialUIState);
 
   const toggleUIState = useCallback((stateName: keyof UIState) => {
@@ -62,6 +99,26 @@ export function AlbumClient() {
   }, []);
 
   const onSendMessage = useCallback((content: string) => {
+    setComments((c) => [
+      ...c,
+      {
+        id: Math.random().toString(),
+        content,
+        photo: {
+          id: "4",
+          name: "IMG-4",
+          url: "https://images.pexels.com/photos/9632415/pexels-photo-9632415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        },
+        album: {
+          id: "1",
+          name: "Nome do álbum",
+        },
+        createdBy: {
+          id: "1",
+          name: "Cliente",
+        },
+      },
+    ]);
     return content;
   }, []);
   const onToggleFavorite = useCallback((photoId: string) => {
@@ -140,7 +197,8 @@ export function AlbumClient() {
         isOpen={UIState.showCommentsModal}
         onCancel={() => toggleUIState("showCommentsModal")}
         context={CommentsModalContext.PHOTO}
-        comments={[]}
+        currentUserId="1"
+        comments={comments as Comment[]}
         onSendMessage={onSendMessage}
       />
     </Container>

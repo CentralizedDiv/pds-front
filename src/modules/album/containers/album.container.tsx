@@ -29,6 +29,7 @@ import {
   AddPhotoModalContainer,
   ActionsContainer,
 } from "./album.styles";
+import { axiosInstance } from "__config/axios";
 
 interface LinkFormValues {
   clientEmail: string;
@@ -89,6 +90,7 @@ export default function Album() {
   ];
   const params = useParams();
   const [filteredPhotos, setFilteredPhotos] = useState(photos);
+  const [showSent, setShowSent] = useState(false);
   const [showCopied, setShowCopied] = useState(false);
   const [isGenerateLinkModalOpen, setIsGenerateLinkModalOpen] = useState(false);
   const [isAddPhotoModalOpen, setIsAddPhotoModalOpen] = useState(false);
@@ -97,12 +99,29 @@ export default function Album() {
   const isLinkFormValid =
     isValidEmail(watchLinkFields[0]) && !!watchLinkFields[1];
 
-  const handleSendLink = useCallback(() => {}, []);
+  const handleSendLink = useCallback(() => {
+    axiosInstance
+      .post("/mail", {
+        to: watchLinkFields[0],
+        subject: "O link para suas fotos está aqui!",
+        message: `
+        <a href="seleto.me/albuns/blabla">seleto.me/albuns/blabla</a>
+        <p>Use a senha abaixo para acessar:</p>
+        <p>${watchLinkFields[1]}</p>
+      `,
+      })
+      .then(() => {
+        setShowSent(true);
+        setTimeout(() => {
+          setShowSent(false);
+        }, 3000);
+      });
+  }, [watchLinkFields]);
   const handleAddPhoto = useCallback(() => {}, []);
   const copyInfoToClipboard = useCallback(() => {
     if (navigator.clipboard && watchLinkFields[1]) {
       navigator.clipboard.writeText(`
-        Aqui está o link para seu álbum:\n${"selete.me/albuns/blabla"}\nUse a senha para acessar:\n${
+        Aqui está o link para seu álbum:\n${"seleto.me/albuns/blabla"}\nUse a senha para acessar:\n${
         watchLinkFields[1]
       }
       `);
@@ -249,13 +268,13 @@ export default function Album() {
         >
           Copiar informações
         </ButtonCP>
-        <CopiedContainer show={showCopied}>
+        <CopiedContainer show={showCopied || showSent}>
           <TextCP
             type={TextType.TEXT_14}
             overrideStyles={{ marginTop: 24 }}
             color={black}
           >
-            Copiado!
+            {showSent ? "Enviado!" : "Copiado!"}
           </TextCP>
         </CopiedContainer>
       </ModalCP>

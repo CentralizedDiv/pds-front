@@ -4,6 +4,7 @@ import { Photo } from "./photo.model";
 import { Photographer } from "./user.model";
 
 export interface Album extends BaseEntity {
+  name: string;
   photos: Photo[];
   comments: Comment[];
   photographer: Omit<Photographer, "albums">;
