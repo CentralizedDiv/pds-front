@@ -51,8 +51,6 @@ interface AllowedEditProps {
 
 type CarouselProps = BaseProps & (NotAllowedEditProps | AllowedEditProps);
 
-// const reducer = (_: number, action: {number}) =>
-
 export const CarouselCP: React.FC<CarouselProps> = ({
   isOpen,
   onClose,
