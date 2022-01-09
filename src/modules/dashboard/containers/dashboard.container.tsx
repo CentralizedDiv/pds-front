@@ -2,16 +2,32 @@ import { ButtonCP } from "components/shared/button/button.component";
 import { IconCircle } from "components/shared/button/button.styles";
 import { ModalCP } from "components/shared/modal/modal.component";
 import PageWrapper from "components/shared/page-wrapper/page-wrapper.component";
+import { FileListCP } from "components/shared/uploader/file-list/file-list.component";
 import { useCallback, useState } from "react";
 import { MdAdd } from "react-icons/md";
-import { TitleContent, PillsContent, AlbumsGrid } from "./dashboard.styles";
+import { useForm } from "react-hook-form";
+import {
+  TitleContent,
+  PillsContent,
+  AlbumsGrid,
+  InputContainer,
+  CreateNewAlbumModalContainer,
+} from "./dashboard.styles";
 import { TextCP, TextType } from "components/shared/text/text.component";
 import { PillsCP } from "components/shared/pills/pills.component";
+import { InputCP } from "components/shared/input/input.component";
 import { AlbumCard } from "modules/dashboard/components/album-card/album-card.component";
+import { black } from "components/shared/colors";
+
+interface NewAlbumFormValues {
+  albumName: string;
+  maxPhotos: number;
+}
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPills, setSelectedPills] = useState([1]);
+  const { register } = useForm<NewAlbumFormValues>();
 
   const pills = [
     {
@@ -58,7 +74,30 @@ export default function Dashboard() {
           onCancel={() => setIsModalOpen(false)}
           onOk={handleCreateNewAlbum}
           okLabel="Criar álbum"
-        ></ModalCP>
+        >
+          <CreateNewAlbumModalContainer>
+            <InputContainer>
+              <InputCP
+                id="albumName"
+                label="Nome"
+                type="name"
+                {...register("albumName")}
+              />
+            </InputContainer>
+            <InputContainer>
+              <InputCP
+                id="maxPhotos"
+                label="Quantidade máxima de fotos"
+                type="number"
+                {...register("maxPhotos")}
+              />
+            </InputContainer>
+            <TextCP color={black} overrideStyles={{ fontWeight: 400 }}>
+              Fotos
+            </TextCP>
+            <FileListCP />
+          </CreateNewAlbumModalContainer>
+        </ModalCP>
         <TitleContent>
           <TextCP type={TextType.HEADING_24}>6 Álbuns</TextCP>
         </TitleContent>

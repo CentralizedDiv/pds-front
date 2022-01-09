@@ -12,3 +12,11 @@ export const AlbumsGrid = styled.div`
   grid-gap: 18px;
   grid-template-columns: repeat(3, 1fr);
 `;
+
+export const InputContainer = styled.div`
+  margin-bottom: 12px;
+`;
+
+export const CreateNewAlbumModalContainer = styled.div`
+  margin: 32px 0px;
+`;
