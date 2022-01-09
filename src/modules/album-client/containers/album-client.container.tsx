@@ -4,11 +4,20 @@ import {
   CommentsModalCP,
 } from "components/comments-modal/comments-modal.component";
 import { ButtonCP } from "components/shared/button/button.component";
+import { TextCP, TextType } from "components/shared/text/text.component";
 import { Comment } from "models/comment.model";
 import { useCallback, useState } from "react";
 import { AfterPhotoSelectionModalCP } from "../components/after-photo-selection-modal/after-photo-selection-modal.component";
 import { SelectedPhotosModalCP } from "../components/selected-photos-modal/seletected-photos-modal.component";
-import { Container } from "./album-client.styles";
+import {
+  Container,
+  MainPhoto,
+  MainPhotoContainer,
+  Content,
+  TitleContainer,
+  PhotosGrid,
+  PhotoContainer,
+} from "./album-client.styles";
 
 interface UIState {
   showCarousel: boolean;
@@ -145,18 +154,37 @@ export function AlbumClient() {
 
   return (
     <Container>
-      <ButtonCP onClick={() => toggleUIState("showCarousel")}>
-        Trigger Carousel
-      </ButtonCP>
-      <ButtonCP onClick={() => toggleUIState("showCommentsModal")}>
-        Trigger Comments Modal
-      </ButtonCP>
-      <ButtonCP onClick={() => toggleUIState("showSelectedPhotosModal")}>
-        Trigger Selected Photos Modal
-      </ButtonCP>
-      <ButtonCP onClick={() => toggleUIState("showAfterPhotoSelectionModal")}>
-        Trigger After Photo Selection Modal
-      </ButtonCP>
+      <MainPhotoContainer onClick={() => toggleUIState("showCarousel")}>
+        <TextCP overrideStyles={{ fontSize: 96 }}>Dia no interior</TextCP>
+        <MainPhoto src={photos[0].url} />
+      </MainPhotoContainer>
+      <TitleContainer>
+        <TextCP type={TextType.TITLE_48}>Dia no interior</TextCP>
+      </TitleContainer>
+      <Content>
+        <TextCP type={TextType.TEXT_16}>
+          Dica: Clique nas imagens para expandir
+        </TextCP>
+        <PhotosGrid>
+          <>
+            {photos.map((photo, index) => {
+              return (
+                <PhotoContainer
+                  src={photo.url}
+                  key={`photo-${index}`}
+                  onClick={() => {
+                    setUIState((state) => ({
+                      ...state,
+                      openCarouselAtId: photo.id,
+                      showCarousel: true,
+                    }));
+                  }}
+                />
+              );
+            })}
+          </>
+        </PhotosGrid>
+      </Content>
       <AfterPhotoSelectionModalCP
         photographerName="Fotógrafo"
         isOpen={UIState.showAfterPhotoSelectionModal}
@@ -198,9 +226,19 @@ export function AlbumClient() {
         onCancel={() => toggleUIState("showCommentsModal")}
         context={CommentsModalContext.PHOTO}
         currentUserId="1"
-        comments={comments as Comment[]}
+        comments={comments as unknown as Comment[]}
         onSendMessage={onSendMessage}
       />
+
+      <ButtonCP onClick={() => toggleUIState("showCommentsModal")}>
+        Trigger Comments Modal
+      </ButtonCP>
+      <ButtonCP onClick={() => toggleUIState("showSelectedPhotosModal")}>
+        Trigger Selected Photos Modal
+      </ButtonCP>
+      <ButtonCP onClick={() => toggleUIState("showAfterPhotoSelectionModal")}>
+        Trigger After Photo Selection Modal
+      </ButtonCP>
     </Container>
   );
 }
