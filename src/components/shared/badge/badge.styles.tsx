@@ -3,6 +3,7 @@ import { error } from "../colors";
 
 const BadgeContainer = styled.div`
   position: relative;
+  display: inherit;
 `;
 const BadgeCircle = styled.div<{ small: boolean }>`
   position: absolute;

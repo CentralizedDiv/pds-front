@@ -26,6 +26,13 @@ export const Content = styled.div`
   overflow: auto;
   flex: 1;
   max-height: calc(100vh - 170px);
+
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 `;
 
 export const FooterActionContainer = styled.div`

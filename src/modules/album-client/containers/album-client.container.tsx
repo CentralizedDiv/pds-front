@@ -14,15 +14,47 @@ interface UIState {
   showCommentsModal: boolean;
   showSelectedPhotosModal: boolean;
   showAfterPhotoSelectionModal: boolean;
+  openCarouselAtId: string | undefined;
 }
 const initialUIState = {
   showCarousel: false,
   showCommentsModal: false,
   showSelectedPhotosModal: false,
   showAfterPhotoSelectionModal: false,
+  openCarouselAtId: undefined,
 };
 
 export function AlbumClient() {
+  const [photos, setPhotos] = useState([
+    {
+      id: "1",
+      name: "IMG-1",
+      url: "https://images.pexels.com/photos/9632418/pexels-photo-9632418.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      isFavorite: false,
+      isSelected: false,
+    },
+    {
+      id: "2",
+      name: "IMG-2",
+      url: "https://images.pexels.com/photos/9632417/pexels-photo-9632417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      isFavorite: true,
+      isSelected: true,
+    },
+    {
+      id: "3",
+      name: "IMG-3",
+      url: "https://images.pexels.com/photos/9632416/pexels-photo-9632416.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      isFavorite: false,
+      isSelected: false,
+    },
+    {
+      id: "4",
+      name: "IMG-4",
+      url: "https://images.pexels.com/photos/9632415/pexels-photo-9632415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      isFavorite: true,
+      isSelected: false,
+    },
+  ]);
   const [UIState, setUIState] = useState<UIState>(initialUIState);
 
   const toggleUIState = useCallback((stateName: keyof UIState) => {
@@ -33,14 +65,26 @@ export function AlbumClient() {
     return content;
   }, []);
   const onToggleFavorite = useCallback((photoId: string) => {
-    return photoId;
+    return setPhotos((_photos) =>
+      _photos.map((photo) => ({
+        ...photo,
+        isFavorite: photo.id === photoId ? !photo.isFavorite : photo.isFavorite,
+      }))
+    );
   }, []);
   const onTogglePreSelect = useCallback((photoId: string) => {
-    return photoId;
+    return setPhotos((_photos) =>
+      _photos.map((photo) => ({
+        ...photo,
+        isSelected: photo.id === photoId ? !photo.isSelected : photo.isSelected,
+      }))
+    );
   }, []);
-  const onFinishSelection = useCallback((selectedPhotos: string[]) => {
-    return selectedPhotos;
-  }, []);
+  const onFinishSelection = useCallback(() => {
+    toggleUIState("showSelectedPhotosModal");
+    toggleUIState("showAfterPhotoSelectionModal");
+    return photos.filter((photo) => photo.isSelected);
+  }, [photos, toggleUIState]);
 
   return (
     <Container>
@@ -56,14 +100,6 @@ export function AlbumClient() {
       <ButtonCP onClick={() => toggleUIState("showAfterPhotoSelectionModal")}>
         Trigger After Photo Selection Modal
       </ButtonCP>
-      <CarouselCP
-        photos={[]}
-        isOpen={UIState.showCarousel}
-        onClose={() => toggleUIState("showCarousel")}
-        allowEdit={true}
-        onToggleFavorite={onToggleFavorite}
-        onTogglePreSelect={onTogglePreSelect}
-      />
       <AfterPhotoSelectionModalCP
         photographerName="Fotógrafo"
         isOpen={UIState.showAfterPhotoSelectionModal}
@@ -72,9 +108,33 @@ export function AlbumClient() {
       <SelectedPhotosModalCP
         isOpen={UIState.showSelectedPhotosModal}
         onCancel={() => toggleUIState("showSelectedPhotosModal")}
-        photos={[]}
+        photos={photos}
+        minimumSelected={3}
         onTogglePreSelect={onTogglePreSelect}
         onFinishSelection={onFinishSelection}
+        onClickPhoto={(photoId) => {
+          setUIState((state) => ({
+            ...state,
+            openCarouselAtId: photoId,
+            showCarousel: true,
+          }));
+        }}
+      />
+      <CarouselCP
+        photos={photos}
+        isOpen={UIState.showCarousel}
+        onClose={() => {
+          setUIState((state) => ({
+            ...state,
+            showCarousel: false,
+            openCarouselAtId: undefined,
+          }));
+        }}
+        allowEdit={true}
+        openAtId={UIState.openCarouselAtId}
+        onToggleFavorite={onToggleFavorite}
+        onTogglePreSelect={onTogglePreSelect}
+        onClickComments={() => toggleUIState("showCommentsModal")}
       />
       <CommentsModalCP
         isOpen={UIState.showCommentsModal}

@@ -9,7 +9,7 @@ export const Button = styled.button<{
 }>`
   outline: none;
   border: none;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  cursor: ${({ disabled }) => (disabled ? "unset" : "pointer")};
 
   border-radius: 8px;
   padding: 0px 16px;
