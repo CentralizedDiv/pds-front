@@ -18,7 +18,7 @@ import {
   ActionsContainer,
   ArrowContainer,
   CloseContainer,
-  CommentActionContainer,
+  PreSelectActionContainer,
   IndicatorContainer,
   MainContainer,
   Photo,
@@ -159,15 +159,13 @@ export const CarouselCP: React.FC<CarouselProps> = ({
                     : "Marcar como favorito"}
                 </TextCP>
               </ActionContainer>
-              <CommentActionContainer
-                onClick={() => onClickComments(currentPhoto.id)}
-              >
+              <ActionContainer onClick={() => onClickComments(currentPhoto.id)}>
                 <BadgeCP content="3">
                   <MdChat color={white} size={24} />
                 </BadgeCP>
                 <TextCP>Comentários</TextCP>
-              </CommentActionContainer>
-              <ActionContainer
+              </ActionContainer>
+              <PreSelectActionContainer
                 onClick={() =>
                   (props as AllowedEditProps).onTogglePreSelect(currentPhoto.id)
                 }
@@ -180,7 +178,7 @@ export const CarouselCP: React.FC<CarouselProps> = ({
                 <TextCP>
                   {currentPhoto.isSelected ? "Selecionado" : "Pré-selecionar"}
                 </TextCP>
-              </ActionContainer>
+              </PreSelectActionContainer>
             </ActionsContainer>
           )}
           <Photo src={currentPhoto.url} alt={currentPhoto.url} />

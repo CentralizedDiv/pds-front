@@ -44,8 +44,8 @@ export const ActionContainer = styled.div`
   cursor: pointer;
 `;
 
-export const CommentActionContainer = styled(ActionContainer)`
-  flex: 1;
+export const PreSelectActionContainer = styled(ActionContainer)`
+  margin-left: auto;
 `;
 
 export const IndicatorContainer = styled.div`
