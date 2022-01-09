@@ -23,6 +23,7 @@ interface ModalProps {
   onOk?: () => void;
 
   disabled?: boolean;
+  withoutPadding?: boolean;
 }
 
 if (process.env.NODE_ENV !== "test") ReactModal.setAppElement("#root");
@@ -36,6 +37,7 @@ export const ModalCP: React.FC<PropsWithChildren<ModalProps>> = ({
   onCancel,
   onOk,
   disabled = false,
+  withoutPadding = false,
   children,
 }) => {
   return (
@@ -70,8 +72,8 @@ export const ModalCP: React.FC<PropsWithChildren<ModalProps>> = ({
             {title}
           </TextCP>
         </TitleContainer>
-        <Content>{children}</Content>
-        <Footer>
+        <Content withoutPadding={withoutPadding}>{children}</Content>
+        <Footer withoutPadding={withoutPadding}>
           <FooterActionContainer onClick={onCancel}>
             <FooterActionIconContainer>
               <MdClose size={16} color="#ffffff" />

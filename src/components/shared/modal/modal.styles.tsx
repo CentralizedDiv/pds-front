@@ -11,7 +11,7 @@ export const TitleContainer = styled.div`
   margin-bottom: 12px;
 `;
 
-export const Footer = styled.div`
+export const Footer = styled.div<{ withoutPadding?: boolean }>`
   height: 56px;
   padding: 0 16px;
   border-radius: 0 0 16px 16px;
@@ -20,12 +20,24 @@ export const Footer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 24px -24px -24px;
+
+  ${({ withoutPadding }) => withoutPadding && `margin: 0 -24px -24px;`}
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<{ withoutPadding?: boolean }>`
   overflow: auto;
   flex: 1;
   max-height: calc(100vh - 170px);
+  outline: none;
+
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
+  ${({ withoutPadding }) => withoutPadding && `margin: 0 -24px;`}
 `;
 
 export const FooterActionContainer = styled.div`

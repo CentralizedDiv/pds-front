@@ -33,3 +33,9 @@ export const PhotosContainer = styled.div`
 export const AddPhotoModalContainer = styled.div`
   margin: 32px 0px;
 `;
+
+export const ActionsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+`;

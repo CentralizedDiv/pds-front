@@ -3,6 +3,7 @@ import { Comment } from "./comment.model";
 import { BaseEntity } from "./common.model";
 
 export interface Photo extends BaseEntity {
+  name: string;
   album: Omit<Album, "photos">;
   comments: Comment[];
   url: string;

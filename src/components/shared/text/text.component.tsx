@@ -46,7 +46,7 @@ export const TextCP: React.FC<PropsWithChildren<TextProps>> = ({
       break;
     case TextType.TEXT_14:
       size = "14px";
-      weight = 400;
+      weight = 500;
       break;
     case TextType.TEXT_12:
       size = "12px";
@@ -54,7 +54,7 @@ export const TextCP: React.FC<PropsWithChildren<TextProps>> = ({
       break;
     default:
       size = "16px";
-      weight = 300;
+      weight = 400;
   }
   return (
     <Text size={size} weight={weight} color={color} style={overrideStyles}>
