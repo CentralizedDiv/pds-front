@@ -1,5 +1,4 @@
 import { black, text_secondary } from "components/shared/colors";
-// import { InputCP } from "components/shared/input/input.component";
 import { ModalCP } from "components/shared/modal/modal.component";
 import { TextCP, TextType } from "components/shared/text/text.component";
 import { Comment as CommentModel } from "models/comment.model";
