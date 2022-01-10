@@ -17,7 +17,16 @@ import {
   TitleContainer,
   PhotosGrid,
   PhotoContainer,
+  AlbumCoverTitleContainer,
+  AlbumCoverAuthorContainer,
+  AlbumCoverName,
+  Footer,
+  FooterActionContainer,
+  FooterActionIconContainer,
+  FooterButtonContainer,
 } from "./album-client.styles";
+
+import { MdCheck } from "react-icons/md";
 
 interface UIState {
   showCarousel: boolean;
@@ -155,7 +164,16 @@ export function AlbumClient() {
   return (
     <Container>
       <MainPhotoContainer onClick={() => toggleUIState("showCarousel")}>
-        <TextCP overrideStyles={{ fontSize: 96 }}>Dia no interior</TextCP>
+        <AlbumCoverTitleContainer>
+          <AlbumCoverName> Dia no interior </AlbumCoverName>
+          {/* TODO: fix later to use the TextCP */}
+          {/* <TextCP overrideStyles={{ fontSize: 96 }}>Dia no interior</TextCP> */}
+          <AlbumCoverAuthorContainer>
+            <TextCP overrideStyles={{ fontSize: 32 }}>
+              por Jefferson Lucena
+            </TextCP>
+          </AlbumCoverAuthorContainer>
+        </AlbumCoverTitleContainer>
         <MainPhoto src={photos[0].url} />
       </MainPhotoContainer>
       <TitleContainer>
@@ -230,15 +248,23 @@ export function AlbumClient() {
         onSendMessage={onSendMessage}
       />
 
-      <ButtonCP onClick={() => toggleUIState("showCommentsModal")}>
-        Trigger Comments Modal
-      </ButtonCP>
-      <ButtonCP onClick={() => toggleUIState("showSelectedPhotosModal")}>
-        Trigger Selected Photos Modal
-      </ButtonCP>
-      <ButtonCP onClick={() => toggleUIState("showAfterPhotoSelectionModal")}>
-        Trigger After Photo Selection Modal
-      </ButtonCP>
+      <Footer>
+        <FooterActionContainer>
+          <TextCP overrideStyles={{ fontSize: 24, marginRight: "20vw" }}>
+            Ver pré-selecionadas
+          </TextCP>
+          <ButtonCP onClick={() => toggleUIState("showSelectedPhotosModal")}>
+            <FooterButtonContainer>
+              <TextCP overrideStyles={{ fontSize: 24 }}>
+                Pré-selecionadas
+              </TextCP>
+              <FooterActionIconContainer>
+                <MdCheck color="#ffffff" />
+              </FooterActionIconContainer>
+            </FooterButtonContainer>
+          </ButtonCP>
+        </FooterActionContainer>
+      </Footer>
     </Container>
   );
 }
