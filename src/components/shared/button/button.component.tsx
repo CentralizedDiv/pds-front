@@ -11,6 +11,7 @@ interface ButtonProps {
   onClick?: () => void;
   style?: React.CSSProperties;
   disabled?: boolean;
+  dataTestId?: string;
 }
 
 export const ButtonCP: React.FC<PropsWithChildren<ButtonProps>> = ({
@@ -23,6 +24,7 @@ export const ButtonCP: React.FC<PropsWithChildren<ButtonProps>> = ({
   style,
   disabled,
   children,
+  dataTestId = "generic-button",
 }) => {
   return (
     <Button
@@ -33,6 +35,7 @@ export const ButtonCP: React.FC<PropsWithChildren<ButtonProps>> = ({
       onClick={onClick}
       style={style}
       disabled={disabled}
+      data-testid={dataTestId}
     >
       {icon && <IconContainer position={iconPosition}>{icon}</IconContainer>}
       <TextCP type={small ? TextType.TEXT_14 : TextType.TEXT_16}>

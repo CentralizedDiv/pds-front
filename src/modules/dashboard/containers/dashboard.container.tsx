@@ -62,6 +62,7 @@ export default function Dashboard() {
               </IconCircle>
             }
             onClick={() => setIsModalOpen(true)}
+            dataTestId="create-new-album-button"
           >
             Novo álbum
           </ButtonCP>
@@ -74,6 +75,7 @@ export default function Dashboard() {
           onCancel={() => setIsModalOpen(false)}
           onOk={handleCreateNewAlbum}
           okLabel="Criar álbum"
+          dataTestId="create-new-album-modal"
         >
           <CreateNewAlbumModalContainer>
             <InputContainer>
