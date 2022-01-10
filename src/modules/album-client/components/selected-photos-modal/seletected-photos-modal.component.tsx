@@ -105,7 +105,7 @@ export const SelectedPhotosModalCP: React.FC<SelectedPhotosModalProps> = ({
       title="Fotos pré-selecionadas"
       onOk={onFinishSelection}
       okLabel="Finalizar seleção"
-      disabled={selectedPhotos.length < minimumSelected}
+      // disabled={selectedPhotos.length < minimumSelected}
     >
       <SelectedPhotosContainer>
         {selectedPhotos.map((photo) => (
