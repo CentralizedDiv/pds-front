@@ -24,6 +24,8 @@ interface ModalProps {
 
   disabled?: boolean;
   withoutPadding?: boolean;
+
+  dataTestId?: string;
 }
 
 if (process.env.NODE_ENV !== "test") ReactModal.setAppElement("#root");
@@ -38,6 +40,7 @@ export const ModalCP: React.FC<PropsWithChildren<ModalProps>> = ({
   onOk,
   disabled = false,
   withoutPadding = false,
+  dataTestId = "generic-modal",
   children,
 }) => {
   return (
@@ -66,7 +69,7 @@ export const ModalCP: React.FC<PropsWithChildren<ModalProps>> = ({
         },
       }}
     >
-      <Container>
+      <Container data-testid={dataTestId}>
         <TitleContainer>
           <TextCP color={black} type={TextType.SUBTITLE_32}>
             {title}

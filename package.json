@@ -37,7 +37,11 @@
     "lint-fix": "eslint src/**/*.{ts,tsx,js,jsx} --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,md,css,scss}\"",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "component-test": "cypress run --browser chrome --no-exit"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/support/steps"
   },
   "eslintConfig": {
     "extends": [
@@ -64,6 +68,8 @@
     "@typescript-eslint/eslint-plugin": "5.4.0",
     "@typescript-eslint/parser": "5.4.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
+    "cypress": "^9.2.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-config-standard": "16.0.3",
     "eslint-plugin-import": "2.22.1",
